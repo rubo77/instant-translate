@@ -1,6 +1,6 @@
 instant_translate.settings:
   type: config_object
-  label: 'Instant Translate Translate settings'
+  label: 'Instant Translate settings'
   mapping:
     auto_mode:
       type: string
@@ -20,13 +20,15 @@ instant_translate.settings:
       type: string
       label: 'Entity langcode of the source text'
     targets:
-      type: mapping
-      label: 'Entity langcode to DeepL target code map'
+      # Free-form map: entity langcode => engine target code.
+      type: ignore
+      label: 'Entity langcode to engine target code map'
     entity_types:
       type: sequence
       label: 'Entity types the auto-translate hooks enqueue'
       sequence:
         type: string
     field_limit:
-      type: mapping
+      # Free-form map: type|type:bundle => list of field names.
+      type: ignore
       label: 'Optional per type/bundle field restrictions'

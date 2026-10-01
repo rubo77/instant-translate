@@ -1,3 +1,13 @@
+<?php
+
+namespace Drupal\instant_translate;
+
+use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Logger\LoggerChannelFactoryInterface;
+use Drupal\Core\Queue\QueueFactory;
+
 /**
  * Translates content entities automatically via an engine plugin
  * (config key "engine"; ships with "deepl" - further engines are

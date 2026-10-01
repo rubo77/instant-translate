@@ -116,6 +116,18 @@ drush instant_translate:translate-all --type=node --only=1,89 --lang=en
 `--dry` counts the characters that would be sent — useful to estimate
 DeepL usage before a rollout.
 
+## Tests
+
+Kernel tests ship in `tests/src/Kernel` (with a fake engine plugin in
+`tests/modules/instant_translate_test`, so no DeepL key is needed).
+Inside a Drupal site with `drupal/core-dev` installed:
+
+```bash
+SIMPLETEST_DB="sqlite://localhost//tmp/it.sqlite" \
+  vendor/bin/phpunit -c web/core/phpunit.xml \
+  web/modules/custom/instant_translate/tests/src/Kernel
+```
+
 ## Requirements
 
 - Drupal 11, `language` + `content_translation` enabled
