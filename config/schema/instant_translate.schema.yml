@@ -1,0 +1,32 @@
+instant_translate.settings:
+  type: config_object
+  label: 'Instant Translate Translate settings'
+  mapping:
+    auto_mode:
+      type: string
+      label: 'Auto-translation mode (off|whitelist|all)'
+    whitelist_ids:
+      type: sequence
+      label: 'Whitelisted entity identifiers (type:id)'
+      sequence:
+        type: string
+    engine:
+      type: string
+      label: 'Translation engine plugin id'
+    deepl_server:
+      type: string
+      label: 'DeepL API base URL'
+    source_language:
+      type: string
+      label: 'Entity langcode of the source text'
+    targets:
+      type: mapping
+      label: 'Entity langcode to DeepL target code map'
+    entity_types:
+      type: sequence
+      label: 'Entity types the auto-translate hooks enqueue'
+      sequence:
+        type: string
+    field_limit:
+      type: mapping
+      label: 'Optional per type/bundle field restrictions'

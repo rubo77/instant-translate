@@ -1,0 +1,31 @@
+# Auto-translation mode: off | whitelist | all
+# whitelist = only entities matching whitelist_ids are auto-translated.
+# Entries: "type:id" (single entity), "type:bundle" (whole bundle),
+# "type:*" (all entities of a type). Paragraphs inherit the allowance
+# from their parent via parent_id/parent_type.
+auto_mode: off
+whitelist_ids: []
+# Optional per-entity-type field restriction: when a key is listed,
+# only these fields of that type ("type") or bundle ("type:bundle")
+# are sent to DeepL.
+field_limit: {  }
+# Active translation engine plugin id (#[TranslateEngine] plugins in
+# Plugin/TranslationEngine; ships with "deepl").
+engine: 'deepl'
+# DeepL API endpoint: free (api-free.deepl.com) or pro (api.deepl.com)
+deepl_server: 'https://api-free.deepl.com'
+# Entity langcode of the source text sent to DeepL.
+source_language: 'de'
+# Target map: entity langcode => DeepL target language code.
+# DeepL requires the variant suffix for English (EN-GB/EN-US); most
+# other languages have no variant.
+targets:
+  en: 'EN-GB'
+  nl: 'NL'
+# Entity types the auto-translate hooks enqueue on save.
+entity_types:
+  - node
+  - taxonomy_term
+  - paragraph
+  - menu_link_content
+  - block_content

@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * @file
+ * Auto-translation hooks for instant_translate.
+ */
+
+use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Core\Entity\EntityInterface;
+
+/**
+ * Implements hook_entity_insert().
+ */
+function instant_translate_entity_insert(EntityInterface $entity): void {
+  _instant_translate_maybe_enqueue($entity);
+}
+
+/**
+ * Implements hook_entity_update().
+ */
+function instant_translate_entity_update(EntityInterface $entity): void {
+  _instant_translate_maybe_enqueue($entity);
+}
+
+/**
+ * Enqueue source-language entities for auto-translation (mode-checked).
+ */
+function _instant_translate_maybe_enqueue(EntityInterface $entity): void {
+  static $reentrance = 0;
+  if ($reentrance || !$entity instanceof ContentEntityInterface) {
+    return;
+  }
+  $reentrance++;
+  try {
+    \Drupal::service('instant_translate.translator')->enqueue($entity);
+  }
+  finally {
+    $reentrance--;
+  }
+}

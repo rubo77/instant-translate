@@ -1,0 +1,13 @@
+{
+    "name": "drupal/instant_translate",
+    "type": "drupal-module",
+    "description": "Auto-translates content entities on save via a pluggable translation engine (ships with DeepL); whitelist scoping, cron queue, no job workflow.",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "drupal/core": "^11",
+        "deeplcom/deepl-php": "^1.19"
+    },
+    "suggest": {
+        "drupal/paragraphs": "Required if paragraph entities should be translated"
+    }
+}

@@ -1,0 +1,8 @@
+name: 'Instant Translate'
+type: module
+description: 'Auto-translates content entities on save via a pluggable translation engine (ships with DeepL); whitelist scoping, cron queue, no job workflow.'
+core_version_requirement: ^11
+package: 'Translation'
+dependencies:
+  - drupal:content_translation
+  - drupal:language

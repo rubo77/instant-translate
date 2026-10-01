@@ -1,0 +1,10 @@
+services:
+  instant_translate.translator:
+    class: Drupal\instant_translate\TranslationService
+    arguments: ['@config.factory', '@entity_type.manager', '@logger.factory', '@queue', '@plugin.manager.instant_translate_engine']
+  plugin.manager.instant_translate_engine:
+    class: Drupal\instant_translate\TranslationEngineManager
+    parent: default_plugin_manager
+  logger.channel.instant_translate:
+    parent: logger.channel_base
+    arguments: ['instant_translate']
