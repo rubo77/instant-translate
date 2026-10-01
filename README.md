@@ -19,8 +19,12 @@ implemented here.
    source-language entity whose type is configured in `entity_types`
    and that passes the `auto_mode` check.
 2. The `instant_translate` queue is processed during cron
-   (`TranslateWorker`, max. 60 s per cron run) or manually via
-   `drush queue:run` / `drush cron`.
+   (`TranslateWorker`, max. 60 s per cron run): with core's
+   `automated_cron` that means queued items are translated in the
+   background **once per hour** — no editor action needed once an
+   entity is flagged outdated. Interval is configurable under
+   `/admin/config/system/cron`; manually via `drush queue:run
+   instant_translate` / `drush cron`.
 3. The worker collects the entity's translatable text properties
    (plain text and email types; text fields use DeepL's HTML tag
    handling so markup survives), sends them in batches of 40 and writes
